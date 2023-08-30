@@ -4,4 +4,4 @@ description: Setup Node.js and propagate the environment.
 
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: './index.js'
