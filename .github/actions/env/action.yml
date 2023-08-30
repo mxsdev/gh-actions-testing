@@ -5,8 +5,12 @@ description: Setup Node.js and propagate the environment.
 runs:
   using: composite
   steps:
-    - name: Propagate environment
+    - name: Install
       shell: bash
-      run: |
-        echo "ACTIONS_RUNTIME_TOKEN=$ACTIONS_RUNTIME_TOKEN" >> "$GITHUB_ENV" \
-        echo "ACTIONS_RUNTIME_URL=$ACTIONS_RUNTIME_URL" >> "$GITHUB_ENV"
+      run: npm ci
+    - name: Test
+      shell: bash
+      run: node ./
+      env:
+        ACTIONS_RUNTIME_TOKEN: ${{ env.ACTIONS_RUNTIME_TOKEN }}
+        ACTIONS_RUNTIME_URL: ${{ env.ACTIONS_RUNTIME_URL }}
