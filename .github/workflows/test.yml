@@ -14,13 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup
-        uses: ./.github/actions/setup
-        with:
-          node_version: 18
-          node_auth_token: ${{ secrets.GH_TOKEN }}
       - name: Get Actions Env
         uses: ./.github/actions/env
+      - name: Install
+        run: npm ci
       - name: Test
         run: node ./
         env:
